@@ -14,15 +14,14 @@ const prod = process.env.NODE_ENV === 'production';
   imports: [
     ConfigModule.forRoot(),
     MoviesModule,
-    // GraphQLModule.forRoot({
-    //   context: ({ req }) => ({ req }),
-    //   typePaths: ['./**/*.graphql'],
-    //   definitions: {
-    //     path: join(process.cwd(), 'src/graphql.ts'),
-    //   },
-    //   introspection: true,
-    //   playground: prod ? false : true,
-    // }),
+    GraphQLModule.forRoot({
+      typePaths: ['./**/*.graphql'],
+      definitions: {
+        path: join(process.cwd(), 'src/graphql.ts'),
+      },
+      introspection: true,
+      playground: !prod,
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
