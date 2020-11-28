@@ -1,13 +1,35 @@
 type Query{
     movies(
-        type: String,
-        page:String,
-        resolution:String,
-        cat:String
-    ): [Movies!]
+        page: String!,
+        resolution: String,
+        cat: String
+    ): [Movie!],
+
+    serials(
+        page: String!,
+        resolution: String,
+        cat: String
+    ): [Serial!]
 }
 
-type Movies{
+type Serial{
+    link: String,
+    kinopoisk_id: String,
+    date: String,
+    camrip: String,
+    ads: String,
+    block: String,
+    serial: String,
+    end: String,
+    quality: String,
+    translation: String,
+    max_qual: String,
+    last_season: String,
+    last_episode: String,
+    info: Info
+}
+
+type Movie{
     link: String,
     kinopoisk_id: String,
     date: String,
@@ -36,5 +58,13 @@ type Info {
     premiere: String,
     age: String,
     time: String,
-    poster: String
+    poster: String,
+    rating: Rating
+}
+
+type Rating{
+    rating_kp: String,
+    vote_num_kp: String,
+    rating_imdb: String,
+    vote_num_imdb: String,
 }

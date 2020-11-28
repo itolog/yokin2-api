@@ -7,6 +7,7 @@ import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MoviesModule } from './movies/movies.module';
+import { TvModule } from './tv/tv.module';
 
 const prod = process.env.NODE_ENV === 'production';
 
@@ -22,6 +23,7 @@ const prod = process.env.NODE_ENV === 'production';
       introspection: true,
       playground: !prod,
     }),
+    TvModule,
   ],
   controllers: [AppController],
   providers: [AppService],
