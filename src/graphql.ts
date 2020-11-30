@@ -9,6 +9,8 @@
 export interface IQuery {
     movies(page: string, resolution?: string, cat?: string): Movie[] | Promise<Movie[]>;
     serials(page: string, resolution?: string, cat?: string): Serial[] | Promise<Serial[]>;
+    search(kp?: string, title?: string): Movie[] | Promise<Movie[]>;
+    nowPlaying(): NowPlaying[] | Promise<NowPlaying[]>;
 }
 
 export interface Serial {
@@ -66,4 +68,11 @@ export interface Rating {
     vote_num_kp?: string;
     rating_imdb?: string;
     vote_num_imdb?: string;
+}
+
+export interface NowPlaying {
+    id?: number;
+    poster_path?: string;
+    backdrop_path?: string;
+    original_title?: string;
 }

@@ -9,7 +9,11 @@ type Query{
         page: String!,
         resolution: String,
         cat: String
-    ): [Serial!]
+    ): [Serial!],
+
+    search(kp: String, title: String): [Movie!]
+
+    nowPlaying: [NowPlaying!]
 }
 
 type Serial{
@@ -67,4 +71,11 @@ type Rating{
     vote_num_kp: String,
     rating_imdb: String,
     vote_num_imdb: String,
+}
+
+type NowPlaying{
+    id: Int,
+    poster_path: String,
+    backdrop_path: String,
+    original_title: String,
 }

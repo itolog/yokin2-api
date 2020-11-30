@@ -49,4 +49,28 @@ export class MoviesResolver {
       return e;
     }
   }
+
+  @Query()
+  @UseInterceptors(MediaInterceptor)
+  async search(
+    @Args('kp') kp: string,
+    @Args('title') title: string,
+  ): Promise<Serial[]> {
+    try {
+      const data = await this.movieService.search(kp, title);
+
+      return data.results;
+    } catch (e) {
+      return e;
+    }
+  }
+
+  @Query()
+  async nowPlaying() {
+    try {
+      return await this.movieService.getNowPlaying();
+    } catch (e) {
+      return e;
+    }
+  }
 }
